@@ -1,7 +1,7 @@
 # latgen.sh
 
 run:
-- `latgen.sh -bcc 2.87 1 1 1 Fe`
+- `latgen.sh -bcc 2.83 1 1 1 Fe`
 - `latgen.sh -b2 3.2798 1 1 1 Ti Al`
 - `latgen.sh -fcc 4.05 1 1 1 Al`
 - `latgen.sh -hcp 3.234 5.168 1 1 1 Zr`
