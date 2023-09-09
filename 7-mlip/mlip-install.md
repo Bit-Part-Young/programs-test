@@ -2,6 +2,7 @@
 
 官方安装 tutorial
 >[installation tutorial · Wiki · Alexander Shapeev / MLIP-2 Tutorials · GitLab](https://gitlab.com/ashapeev/mlip-2-tutorials/-/wikis/installation-tutorial)
+
 >[README.md · master · Alexander Shapeev / LAMMPS-MLIP interface · GitLab](https://gitlab.com/ashapeev/interface-lammps-mlip-2/-/blob/master/README.md)
 
 
