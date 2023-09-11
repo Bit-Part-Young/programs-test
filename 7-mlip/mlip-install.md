@@ -20,7 +20,7 @@ module load intel-oneapi-tbb/2021.4.0
 >3. 建议在编译 mlip-2 开始前，就 module load intel oneapi 套件，因为 `./configure` 命令会自动检测所在平台是否有 mpi，若检测无只会编译串行 serial 版本，后续的接口编译也只能选择串行版本
 
 
-- 编译接口时，可以在 preinstall.sh 脚本中添加 lammps 需要的 package，可以添加以下 packages
+- 编译接口时，可以在 preinstall.sh 脚本中添加 lammps 需要的 package，添加以下 packages
 ```bash
 make yes-basic
 make yes-manybody
@@ -34,10 +34,10 @@ make yes-KSPACE
 
 
 
-安装情况
-- manager 编译 mlip-2 出错，后续无法进行（应该是 2015 版本的 intel 有些老，可以编译 mpi 版本（暂未尝试））
-- master 和 siyuan 能编译 2022 版本及最新的稳定版本的 lammps
-- arm 编译 mlip-2 出错，后续无法进行（无 intel 程序）
+- 安装情况：
+- [x] master、pi 和 siyuan 能编译 2022 版本及最新的稳定版本（20230802）的 lammps
+- [ ] manager 编译 mlip-2 出错，后续无法进行（应该是 2015 版本的 intel 有些老，可以编译 mpi 版本（暂未尝试））
+- [ ] arm 编译 mlip-2 出错，后续无法进行（无 intel 程序）
 
 
 
@@ -69,6 +69,33 @@ mv lammps-stable_23Jun2022_update4 lammps-stable_23Jun2022
 ---
 
 ## 遇到的问题
+
+### 编译成功
+
+- `g++_mpich` 版本
+```bash
+mpicxx -cxx=g++ -g -O -std=c++11 main.o -L../../lib/mlip -L. -llammps_g++_mpich -l_mlip_interface -std=c++11 -lgfortran -ldl -o ../lmp_g++_mpich
+size ../lmp_g++_mpich
+   text data bss dec hex filename
+6073025 12712 11280 6097017 5d0879 ../lmp_g++_mpich
+make[1]: Leaving directory `/lustre/home/acct-mseklt/mseklt/yangsl/software/pi-softwares/lammps-stable_23Jun2022/src/Obj_g++_mpich'
+
+```
+
+
+- `intel_cpu_intelmpi` 版本
+```bash
+mpiicpc -std=c++11 -diag-disable=10441 -diag-disable=2196 -qopenmp -xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -L/dssg/opt/icelake/linux-centos8-icelake/gcc-8.5.0/intel-oneapi-mkl-2021.4.0-r7h6alnulyzgb6iqvxhovmwrajvwbqxf/mkl/2021.4.0/lib/intel64/ main.o -L../../lib/mlip       -L. -llammps_intel_cpu_intelmpi -l_mlip_interface     -std=c++11 -lgfortran  -ldl -ltbbmalloc -lmkl_intel_ilp64 -lmkl_sequential -lmkl_core   -o ../lmp_intel_cpu_intelmpi
+size ../lmp_intel_cpu_intelmpi
+   text    data     bss     dec     hex filename
+13436817         242936   14280 13694033         d0f451 ../lmp_intel_cpu_intelmpi
+make[1]: Leaving directory '/dssg/home/acct-mseklt/mseklt/yangsl/src/MLIP/lammps-stable_23Jun2022/src/Obj_intel_cpu_intelmpi'
+
+```
+
+
+
+---
 
 ### manager 编译 mlip-2 出现错误
 
@@ -423,33 +450,6 @@ make[1]: *** [Makefile:98: ../lmp_intel_cpu_intelmpi] Error 1
 make[1]: Leaving directory '/dssg/home/acct-mseklt/mseklt/yangsl/src/MLIP/lammps-stable_23Jun2022/src/Obj_intel_cpu_intelmpi'
 make: *** [Makefile:393: intel_cpu_intelmpi] Error 2
 cp: cannot stat '../lammps-stable_23Jun2022/src/lmp_intel_cpu_intelmpi': No such file or directory
-
-```
-
-
-
----
-
-### 编译成功
-
-- `g++_mpich` 版本
-```bash
-mpicxx -cxx=g++ -g -O -std=c++11 main.o -L../../lib/mlip -L. -llammps_g++_mpich -l_mlip_interface -std=c++11 -lgfortran -ldl -o ../lmp_g++_mpich
-size ../lmp_g++_mpich
-   text data bss dec hex filename
-6073025 12712 11280 6097017 5d0879 ../lmp_g++_mpich
-make[1]: Leaving directory `/lustre/home/acct-mseklt/mseklt/yangsl/software/pi-softwares/lammps-stable_23Jun2022/src/Obj_g++_mpich'
-
-```
-
-
-- `intel_cpu_intelmpi` 版本
-```bash
-mpiicpc -std=c++11 -diag-disable=10441 -diag-disable=2196 -qopenmp -xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -L/dssg/opt/icelake/linux-centos8-icelake/gcc-8.5.0/intel-oneapi-mkl-2021.4.0-r7h6alnulyzgb6iqvxhovmwrajvwbqxf/mkl/2021.4.0/lib/intel64/ main.o -L../../lib/mlip       -L. -llammps_intel_cpu_intelmpi -l_mlip_interface     -std=c++11 -lgfortran  -ldl -ltbbmalloc -lmkl_intel_ilp64 -lmkl_sequential -lmkl_core   -o ../lmp_intel_cpu_intelmpi
-size ../lmp_intel_cpu_intelmpi
-   text    data     bss     dec     hex filename
-13436817         242936   14280 13694033         d0f451 ../lmp_intel_cpu_intelmpi
-make[1]: Leaving directory '/dssg/home/acct-mseklt/mseklt/yangsl/src/MLIP/lammps-stable_23Jun2022/src/Obj_intel_cpu_intelmpi'
 
 ```
 
