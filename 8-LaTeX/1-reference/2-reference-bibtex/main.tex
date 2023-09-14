@@ -1,0 +1,25 @@
+%导言区
+\documentclass{ctexart}
+\usepackage[sort&compress]{gbt7714}
+
+\bibliographystyle{gbt7714-numerical} %等价于\bibpunct{[}{]}{,}{s}{}{}
+
+
+%正文区
+\begin{document}
+ 文献引用：\cite{张杰2020}。
+
+ 文献引用：\cite{杨继生邹建文2020,朱恒鹏岳阳2020}
+
+ 文献引用：\cite{Alkire2017,曹廷求张光利2020,田国强李双建2020,张杰2020}
+
+ 文献引用：\cite{Alkire2017}。
+
+ 文献引用：\cite{Foster2009,Berenger2019}。
+
+ 文献引用：\cite{Zhou2021,Suppa2018,Alkire2011}。
+
+
+
+ \bibliography{reference.bib}
+\end{document}
