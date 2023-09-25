@@ -23,7 +23,7 @@ $(TARGET): $(MAIN).tex
 clean:
 	rm -f $(MAIN).aux ${MAIN}.bbl ${MAIN}.bcf $(MAIN).blg \
 		$(MAIN).fdb_latexmk $(MAIN).fls $(MAIN).log $(MAIN).out \
-		$(MAIN).run.xml $(MAIN).toc $(MAIN).xdv
+		$(MAIN).run.xml $(MAIN).toc $(MAIN).xdv $(MAIN).synctex.gz
 
 # Define the target to clean up generated pdf files
 distclean: 
