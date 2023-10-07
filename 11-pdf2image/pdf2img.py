@@ -36,12 +36,12 @@ if __name__ == "__main__":
     pdf2img(pdf_file=pdf_file, output_file=output_file)
 
     # 多个单页面 pdf 文件转图片
-    pdf_path = "pdf_path"
-    pdf_files = [_ for _ in os.listdir(pdf_path) if _.endswith("pdf")]
-    single_file = True
+    # pdf_path = "pdf_path"
+    # pdf_files = [_ for _ in os.listdir(pdf_path) if _.endswith("pdf")]
+    # single_file = True
 
-    for pdf_file in pdf_files:
-        output_file = f"{pdf_file[:-4]}"
-        pdf2img(pdf_file=pdf_file, output_file=output_file, single_file=single_file)
+    # for pdf_file in pdf_files:
+    #     output_file = f"{pdf_file[:-4]}"
+    #     pdf2img(pdf_file=pdf_file, output_file=output_file, single_file=single_file)
 
     print("pdf to img convertion is done.")
