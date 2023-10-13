@@ -1,5 +1,6 @@
 """pdf 文件转 图片"""
 import os
+import sys
 
 from pdf2image import convert_from_bytes, convert_from_path
 from pdf2image.exceptions import (
@@ -16,7 +17,9 @@ def pdf2img(
     single_file: bool = False,
     output_folder: str = "./fig-pdf",
 ):
-    """pdf 文件转 图片"""
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
     images = convert_from_path(
         pdf_file,
         fmt="png",
@@ -30,9 +33,10 @@ def pdf2img(
 
 
 if __name__ == "__main__":
+    pdf_file = sys.argv[1]
+    output_file = sys.argv[2]
+
     # 单个多页面 pdf 文件转图片
-    pdf_file = "pdf_file"
-    output_file = "pdf_fig"
     pdf2img(pdf_file=pdf_file, output_file=output_file)
 
     # 多个单页面 pdf 文件转图片
