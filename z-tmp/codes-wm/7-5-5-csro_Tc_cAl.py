@@ -44,7 +44,8 @@ colors = {
 
 cs = [0.1]
 # cs = [0.1, 0.15, 0.2]
-df = pd.read_csv("csv/csro_300.csv")
+df = pd.read_csv("./csro_300.csv")
+# df = pd.read_csv("csv/csro_300.csv")
 # pairs = ['AlAl', 'AlTi', 'AlNb', 'AlZr', 'TiTi', 'TiNb', 'TiZr', 'NbNb', 'NbZr', 'ZrZr']
 pairs = [
     "AlTi",
@@ -67,7 +68,7 @@ Al13 = {
     "ZrZr": -0.92824,
 }
 
-fig, ax = plt.subplots()
+# fig, ax = plt.subplots()
 fig, axes = plt.subplots(
     2, 1, gridspec_kw={"height_ratios": [2, 4]}, sharex=True, figsize=(9, 7)
 )
