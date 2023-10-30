@@ -1,4 +1,5 @@
 """pdf 文件转 图片"""
+
 import os
 import sys
 
@@ -48,4 +49,4 @@ if __name__ == "__main__":
     #     output_file = f"{pdf_file[:-4]}"
     #     pdf2img(pdf_file=pdf_file, output_file=output_file, single_file=single_file)
 
-    print("pdf to img convertion is done.")
+    print("\npdf to img convertion is done.")
