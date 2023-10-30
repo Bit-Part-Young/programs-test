@@ -1,3 +1,3 @@
 # aimsgb test
 
-aimsgb 程序测试
+aimsgb 晶界模型构建程序测试
