@@ -1,0 +1,24 @@
+Global Parameters
+ISTART =  0       
+ISPIN  =  1       
+ICHARG =  2      
+LREAL  = .FALSE.  
+ENCUT  =  500     
+PREC   =  A       
+LWAVE  = .FALSE.  
+LCHARG = .FALSE.  
+ADDGRID= .TRUE.   
+ 
+Electronic Relaxation
+ISMEAR =  0      
+SIGMA  =  0.05   
+NELM   =  90     
+NELMIN =  6      
+EDIFF  =  1E-08  
+GGA    =  PE     
+ALGO   =  N 
+ 
+Ionic Relaxation
+NSW    =  1        
+IBRION =  8                  
+EDIFFG = -0.01 
