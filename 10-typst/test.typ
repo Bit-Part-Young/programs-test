@@ -1,4 +1,24 @@
+
+#outline(
+   title: "目  录",
+)
+
+// 设置中文字体
+#set text(font: "Noto Sans CJK SC")
+// #set text(font: "Noto Sans Mono CJK SC")
+
+
+
+// 目录页独占一页
+#pagebreak()
+
+// 添加页码
+#set page(numbering: "1")
+
+
 #set heading(numbering: "1.")
+
+
 
 = 一级标题
 == 二级标题
