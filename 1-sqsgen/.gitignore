@@ -1,1 +1,3 @@
 *.result.yaml
+*.tar.gz
+test.py
