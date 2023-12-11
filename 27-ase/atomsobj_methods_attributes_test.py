@@ -45,6 +45,7 @@ print(struct.get_masses())
 print("---" * 25)
 
 print("Structure positions:")
+print(struct.positions)
 print(struct.get_positions())
 print("---" * 25)
 
