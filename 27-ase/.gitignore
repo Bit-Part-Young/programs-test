@@ -1,0 +1,6 @@
+*.vasp
+!Nb5Si3_alpha.vasp
+*.poscar
+*.xyz
+*.lammps-data
+
