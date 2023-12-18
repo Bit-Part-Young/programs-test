@@ -9,5 +9,6 @@
 *.run.xml
 *.toc
 *.xdv
+*.synctex.gz
 
 *.pdf
