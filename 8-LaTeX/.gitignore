@@ -12,6 +12,9 @@
 *.toc
 *.xdv
 
+# pdf
+*.dvi
+*.pdf
+
 2-general/
 
-*.pdf

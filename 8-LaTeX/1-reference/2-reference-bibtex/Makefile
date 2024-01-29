@@ -1,33 +1,35 @@
-# Makefile for LaTeX compilation
+# Makefile for report-template-MMMS
+# reference: https://github.com/sjtug/SJTUThesis/blob/master/Makefile
 
-# Set the name of the main tex file (without the .tex extension)
-MAIN = main
+# Basename of tex file
+OBJ = main
 
-# Set the LaTeX compiler
-LATEX_COMPILER = xelatex
-REFERENCE_COMPILER = bibtex
+# Option for latexmk
+LATEXMK_OPT = -time -file-line-error -halt-on-error -interaction=nonstopmode
 
-# Set the target file (PDF output)
-TARGET = $(MAIN).pdf
+.PHONY: all pvc clean cleanall FORCE_MAKE auto help
 
-# Define the default target
-all: $(TARGET)
+auto: all clean
 
-# Define the target to build the PDF output and clean up auxiliary files
-$(TARGET): $(MAIN).tex
-	$(LATEX_COMPILER) $(MAIN).tex
-	$(REFERENCE_COMPILER) $(MAIN).aux
-	$(LATEX_COMPILER) $(MAIN).tex
-	$(LATEX_COMPILER) $(MAIN).tex
+all: $(OBJ).pdf
+
+help:
+	@echo "Usage:"
+	@echo "    make [option]"
+	@echo "options:"
+	@echo "    all         Compile tex file"
+	@echo "    clean       Clean all work files"
+	@echo "    cleanall    Clean all work files and pdf file"
+	@echo "    auto        Excute all and clean"
+	@echo "    help        Print this help message"
+
+$(OBJ).pdf: $(OBJ).tex FORCE_MAKE
+	@latexmk $(LATEXMK_OPT) $<
 
 clean:
-	rm -f $(MAIN).aux ${MAIN}.bbl ${MAIN}.bcf $(MAIN).blg \
-		$(MAIN).fdb_latexmk $(MAIN).fls $(MAIN).log $(MAIN).out \
-		$(MAIN).run.xml $(MAIN).toc $(MAIN).xdv $(MAIN).synctex.gz
+	-@latexmk -c -silent $(OBJ).tex 2> /dev/null
+	-@rm -f $(OBJ).bbl 2> /dev/null
 
-# Define the target to clean up generated pdf files
-distclean: 
-	rm -f $(MAIN).pdf
-
-# Phony targets (targets that are not real files)
-.PHONY: all distclean clean
+cleanall:
+	-@latexmk -C -silent $(OBJ).tex 2> /dev/null
+	-@rm -f $(OBJ).bbl 2> /dev/null
