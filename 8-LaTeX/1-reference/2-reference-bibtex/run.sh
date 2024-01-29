@@ -1,6 +1,3 @@
 #!/bin/bash
 
-xelatex main.tex
-bibtex main.aux
-xelatex main.tex
-xelatex main.tex
+latexmk -xelatex -time -halt-on-error main.tex
