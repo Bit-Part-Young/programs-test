@@ -1,7 +1,7 @@
-%导言区
-\documentclass{article}
+\documentclass{ctexart}
+
 \usepackage[dvipsnames]{xcolor}
-\usepackage{indentfirst}
+% \usepackage{indentfirst}
 \usepackage{hyperref}
 \hypersetup{
  colorlinks=true,
@@ -10,57 +10,41 @@
  urlcolor=violet
 }
 
-\usepackage[
- backend=biber,
- citestyle=numeric-comp,
- bibstyle=numeric,
- maxbibnames=9
- ]{biblatex}
-
-\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
-{\usebibmacro{cite:init}%
- \let\multicitedelim=\supercitedelim
- \iffieldundef{prenote}
- {}
- {\BibliographyWarning{Ignoring prenote argument}}%
- \iffieldundef{postnote}
- {}
- {\BibliographyWarning{Ignoring postnote argument}}%
- \bibopenbracket}%
-{\usebibmacro{citeindex}%
- \usebibmacro{cite:comp}}
-{}
-{\usebibmacro{cite:dump}\bibclosebracket}
-
-\renewbibmacro{in:}{}
-\renewcommand{\finalnamedelim}{~and~}
-\addbibresource[location=local]{refs.bib}
-
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
+% 文献表条目间的间距
+\setlength{\bibitemsep}{0pt}
+% 导入参考文献数据库
+\addbibresource{refs.bib}
+\renewcommand{\bibname}{参考文献}
 
 
 %正文区
 \begin{document}
- \tableofcontents
- 
- \section{test one}
- Reference citation: \parencite{Foster2009}; 
- 
- Reference citation: \parencite{Foster2009,Blundell2008}; 
- 
- Reference citation: \parencite{Foster2009,Blundell2008,Suppa2018};
- 
-%  Reference citation: \parencite{Zhou2021,Alkire2011,Wooldridge2010,Greenwood2014,Spuhler1961,Rosenfeld2008,Xepapadeas2005}.
- 
- \section{test two}
- Reference citation: \supercite{Foster2009}; 
- 
- Reference citation: \supercite{Foster2009,Blundell2008}; 
- 
-%  Reference citation: \supercite{Foster2009,Blundell2008,Wooldridge2010};
- 
-%  Reference citation: \supercite{Zhou2021,Alkire2011,Wooldridge2010,Greenwood2014,Spuhler1961,Rosenfeld2008,Xepapadeas2005}.
- 
- 
- \printbibliography[heading=bibintoc,title={Reference}]
+
+\tableofcontents
+
+\section{测试1}
+文献引用\parencite{CHEN20092657}; 
+
+文献引用\parencite{CHEN20092657,Tang2023,Yin2021}; 
+
+文献引用\parencite{CHEN20092657,Tang2023,ZHU2023119062};
+
+
+\section{测试2}
+文献引用\supercite{CHEN20092657}; 
+
+文献引用\supercite{CHEN20092657,Tang2023}; 
+
+\section{测试3}
+文献引用\cite{CHEN20092657}; 
+
+文献引用\cite{CHEN20092657,Tang2023,Yin2021}; 
+
+文献引用\cite{CHEN20092657,Tang2023,ZHU2023119062};
   
+% 参考文献
+\newpage
+\printbibliography[heading=bibintoc]
+
 \end{document}
