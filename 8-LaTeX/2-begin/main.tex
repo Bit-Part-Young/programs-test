@@ -1,6 +1,7 @@
 \documentclass{ctexart}
 \usepackage{newtxtext}
 \usepackage{tcolorbox}
+\usepackage{lipsum} % 用于生成示例文本
 
 \begin{document}
 
@@ -20,12 +21,21 @@ abcdefghijklmnopqrstuvwxyz
 波浪线：\~{}
 
 \begin{tcolorbox}
+    \indent 这是一个简单的 tcolorbox 示例。
+    这是一个简单的 tcolorbox 示例。
     这是一个简单的 tcolorbox 示例。
 \end{tcolorbox}
 
 \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=My box]
+    \qquad 这是一个带有背景色和标题的 tcolorbox 示例。
+    这是一个带有背景色和标题的 tcolorbox 示例。
     这是一个带有背景色和标题的 tcolorbox 示例。
 \end{tcolorbox}
 
+\begin{tcolorbox}[before upper={\parindent1em}]
+% \begin{tcolorbox}
+    \lipsum[1]
+    %\qquad \lipsum[1]
+\end{tcolorbox}
 
 \end{document}
