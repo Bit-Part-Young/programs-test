@@ -1,3 +1,5 @@
+#import "@preview/showybox:2.0.1": showybox
+
 // reference: https://github.com/lucifer1004/pkuthss-typst/blob/main/template.typ
 #let 字号 = (
   初号: 42pt,
