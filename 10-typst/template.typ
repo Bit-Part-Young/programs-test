@@ -1,4 +1,9 @@
 #import "@preview/showybox:2.0.1": showybox
+#import "@preview/codly:0.1.0": *
+#import "@preview/tablex:0.0.6": tablex, hlinex
+#import "@preview/tablem:0.1.0": tablem
+#import "@preview/outrageous:0.1.0"
+
 
 // reference: https://github.com/lucifer1004/pkuthss-typst/blob/main/template.typ
 #let 字号 = (
@@ -30,6 +35,7 @@
   得意黑: ("Smiley Sans",),
 )
 
+
 // template
 #let conf(body) = {
   
@@ -42,7 +48,8 @@
   set heading(numbering: "1.")
 
   set text(
-    font: 字体.得意黑,
+    font: 字体.宋体,
+    // font: 字体.得意黑,
     size: 字号.小四,
   )
 
@@ -55,8 +62,36 @@
     )
   ]
 
+  pagebreak(weak: true)
+
   body
 }
+
+
+// language icon
+#let icon(codepoint) = {
+  box(
+    height: 0.8em,
+    baseline: 0.05em,
+    image(codepoint)
+  )
+  h(0.1em)
+}
+
+// 三线表
+#let three-line-table = tablem.with(
+  render: (columns: auto, ..args) => {
+    tablex(
+      columns: columns,
+      auto-lines: false,
+      align: center + horizon,
+      hlinex(y: 0),
+      hlinex(y: 1),
+      ..args,
+      hlinex(),
+    )
+  }
+)
 
 
 // https://github.com/mem-courses/linear-algebra/blob/main/global.typ

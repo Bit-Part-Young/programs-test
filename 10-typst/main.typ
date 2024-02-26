@@ -1,4 +1,14 @@
 #import "template.typ": *
+#show outline.entry: outrageous.show-entry.with(
+    // the typst preset retains the normal Typst appearance
+    ..outrageous.presets.typst,
+    // we only override a few things:
+    // level-1 entries are italic, all others keep their font style
+    font-style: (auto, auto),
+    // no fill for level-1 entries, a thin gray line for all deeper levels
+    fill: (none, auto),
+    // fill: (none, line(length: 100%, stroke: black + .5pt)),
+)
 
 #show: conf
 
@@ -6,14 +16,17 @@
 = 基本语法
 
 
-
 == 图片
+
 
 == box
 
+
 == grid
 
+
 == block
+
 
 == 文献及引用
 
@@ -43,6 +56,7 @@
 // #line(length: 100%)
 
 = packages推荐
+
 
 == showybox
 
@@ -81,6 +95,56 @@
   $ integral.double_Sigma (bold(nabla) times bold(F)) dot bold(Sigma) = integral.cont_(diff Sigma) bold(F) dot dif bold(Gamma) $
   ]
 )
+
+
+== codly
+
+
+#show: codly-init.with()
+#codly(
+  languages: (
+    // 这里只能写 rust，
+    rust: (name: "Rust", icon: icon("assets/brand-python.svg"), color: rgb("#CE412B")),
+    python: (name: "Python", icon: icon("assets/brand-rust.svg"), color: rgb("#3572A5")),
+  )
+)
+
+Python源代码：
+
+```python
+def fibonaci(n):
+    if n <= 1:
+        return n
+    else:
+        return(fibonaci(n-1) + fibonaci(n-2))
+```
+
+Rust源代码：
+
+```rust
+pub fn main() {
+    println!("Hello, world!");
+}
+```
+
+
+== tablem
+
+三线表：
+
+#{
+  set align(center)
+  three-line-table[
+    | *Name* | *Location* | *Height* | *Score* |
+    | ------ | ---------- | -------- | ------- |
+    | John   | Second St. | 180 cm   |  5      |
+    | Wally  | Third Av.  | 160 cm   |  10     |
+  ]
+}
+
+
+== drafting
+
 
 = 其他一些有用的东西
 
