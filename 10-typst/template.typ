@@ -1,3 +1,28 @@
+// template
+#let conf(body) = {
+  
+  set document(
+    title: "typst learning",
+    author: "SLY",
+    date: auto,
+  )
+
+  set heading(numbering: "1.")
+
+  // 目录
+  [
+    #set align(center)
+    #outline(
+      title: par("目录"),
+      indent: 1em,
+    )
+  ]
+
+  body
+}
+
+
+// https://github.com/mem-courses/linear-algebra/blob/main/global.typ
 #let prob(bgcolor: luma(248), border: luma(88), text) = block(
   fill: bgcolor,
   width: 100%,
