@@ -53,18 +53,39 @@
     size: 字号.小四,
   )
 
+
   // 目录
-  [
-    #set align(center)
-    #outline(
-      title: par("目录"),
+  {
+
+    set align(center)
+    set text(font: 字体.宋体, size: 字号.小四)
+    set page(numbering: "I")
+    counter(page).update(1)
+
+    for Level in (1, 2, 3) {
+      show outline.entry.where(
+          level: Level
+        ): it => {
+          v(18pt, weak: true)
+          strong(it)
+      }
+    }
+
+    outline(
+      title: text("目") + h(1em) + text("录"),
       indent: 1em,
     )
-  ]
 
-  pagebreak(weak: true)
+    pagebreak(weak: true)
+  }
 
-  body
+
+  // 正文
+  {
+    counter(page).update(1)
+
+    body
+  }
 }
 
 

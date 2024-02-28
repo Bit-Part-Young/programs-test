@@ -1,14 +1,5 @@
 #import "template.typ": *
-#show outline.entry: outrageous.show-entry.with(
-    // the typst preset retains the normal Typst appearance
-    ..outrageous.presets.typst,
-    // we only override a few things:
-    // level-1 entries are italic, all others keep their font style
-    font-style: (auto, auto),
-    // no fill for level-1 entries, a thin gray line for all deeper levels
-    fill: (none, auto),
-    // fill: (none, line(length: 100%, stroke: black + .5pt)),
-)
+
 
 #show: conf
 
@@ -99,15 +90,15 @@
 
 == codly
 
-
 #show: codly-init.with()
 #codly(
   languages: (
-    // 这里只能写 rust，
-    rust: (name: "Rust", icon: icon("assets/brand-python.svg"), color: rgb("#CE412B")),
-    python: (name: "Python", icon: icon("assets/brand-rust.svg"), color: rgb("#3572A5")),
+    python: (name: "Python", icon: icon("assets/brand-python.svg"), color: rgb("#CE412B")),
+    rust: (name: "Rust", icon: icon("assets/brand-rust.svg"), color: rgb("#3572A5")),
+    cpp: (name: "C++", icon: icon("assets/brand-cpp.svg"), color: rgb("#3572A5")),
   )
 )
+
 
 Python源代码：
 
