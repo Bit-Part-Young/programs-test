@@ -18,4 +18,5 @@ $(TARGET):
 	typst $(TYPST_COMPILER) ${FILE} ${FONT_FLAG} ${FONT_PATH}
 
 clean:
-	@rm -f *.pdf
+	@rm -f main.pdf template.pdf
+
