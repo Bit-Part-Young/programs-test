@@ -1,3 +1,5 @@
+*.original
+
 # latex compilation intermediate files
 *.aux
 *.bbl

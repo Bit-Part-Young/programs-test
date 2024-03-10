@@ -1,2 +1,4 @@
+*.original
+
 *.pdf
 !typst-learning.pdf
